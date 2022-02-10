@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button} from './components/Button';
 import {Number} from "./components/Number";
 import './App.css'
@@ -13,6 +13,12 @@ export function Counter() {
             setCounter(count)
         }
     }
+
+    useEffect(() => {
+        localStorage.setItem('counterNumber', JSON.stringify(counter))
+    }, [counter])
+
+    useEffect(() => {}, [])
 
     const Reset = () => {
         setCounter(0)
