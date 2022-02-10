@@ -15,10 +15,17 @@ export function Counter() {
     }
 
     useEffect(() => {
+        let num = localStorage.getItem('counterNumber');
+        if (num) {
+            setCounter(JSON.parse(num))
+        }
+    }, [])
+
+    useEffect(() => {
         localStorage.setItem('counterNumber', JSON.stringify(counter))
     }, [counter])
 
-    useEffect(() => {}, [])
+
 
     const Reset = () => {
         setCounter(0)
